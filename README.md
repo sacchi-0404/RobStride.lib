@@ -1,2 +1,2 @@
 # RobStride.lib
-RobStrideのライブラリです
+//RobStrideのライブラリです
