@@ -66,7 +66,7 @@ public:
     void setAccelerationPP(float acc_rad_s2);   // 加速度 (0x7025)
     
 
-    void update();
+    int update();
 
     float getPosition();
     float getVelocity();
