@@ -131,9 +131,10 @@ void RobStride::setMaxSpeedPP(float speed) { sendParam(IDX_VEL_MAX, speed); }
 void RobStride::setAccelerationPP(float acc) { sendParam(IDX_ACC_SET, acc); }
 // ---------------
 
-void RobStride::update() {
+int RobStride::update() {
     CANMessage msg;
-    if (_can.read(msg)) {
+    int return_can = _can.read(msg);
+    if (return_can) {
         uint8_t type = (msg.id >> 24) & 0x1F;
         uint8_t src_id = (msg.id >> 8) & 0xFF;
 
@@ -149,6 +150,7 @@ void RobStride::update() {
             _fb_temp = (float)temp_int / 10.0f;
         }
     }
+    return return_can;
 }
 
 float RobStride::getPosition() { return _fb_p; }
